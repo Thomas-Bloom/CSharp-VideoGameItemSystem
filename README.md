@@ -16,4 +16,6 @@ This program demonstrates how to use OOP techniques to create a text-based item/
 - Items can be 'Picked up' and assigned to the first available (empty) 'slot'.
 - If a 'slot' holds an Item, the item can be dropped or it can swap to another 'slot'.
 
+## Image of test data
+This is to clearly show what is happening at every step.
 ![image](https://user-images.githubusercontent.com/20408968/126556335-adb28e8f-65b6-4271-974a-9ea1972ff326.png)
