@@ -50,6 +50,7 @@
     <Compile Include="Src\Items\Equipment\Weapons\Weapon.cs" />
     <Compile Include="Src\Items\Inventory.cs" />
     <Compile Include="Src\Items\Item.cs" />
+    <Compile Include="Src\Player\Player.cs" />
     <Compile Include="Src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

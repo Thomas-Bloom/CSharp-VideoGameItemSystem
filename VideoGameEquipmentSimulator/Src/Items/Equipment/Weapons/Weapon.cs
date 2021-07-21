@@ -2,7 +2,7 @@
 
 namespace VideoGameItemSystem.Src.Equipment.Weapons
 {
-    class Weapon : Item
+    abstract class Weapon : Item
     {
         protected int attackPower;
         protected int attackSpeed;

@@ -1,6 +1,6 @@
 ﻿namespace VideoGameItemSystem.Src.Items
 {
-    class Item
+    abstract class Item
     {
         protected string itemName;
         protected int value;

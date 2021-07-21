@@ -3,7 +3,7 @@ using VideoGameItemSystem.Src.Items;
 
 namespace VideoGameItemSystem.Src.Equipment.Armour
 {
-    class Armour : Item
+    abstract class Armour : Item
     {
         protected int armourRating;
 
