@@ -1,4 +1,5 @@
-﻿using VideoGameItemSystem.Src.Items;
+﻿using System;
+using VideoGameItemSystem.Src.Items;
 
 namespace VideoGameItemSystem.Src.Equipment.Weapons
 {
@@ -11,6 +12,11 @@ namespace VideoGameItemSystem.Src.Equipment.Weapons
         {
             this.attackPower = attackPower;
             this.attackSpeed = attackSpeed;
+        }
+
+        public override void PrintStats()
+        {
+            Console.WriteLine("Weapon - Name: " + itemName + ", Value: " + value + ", Attack Power: " + attackPower + ", Attack Speed: " + attackSpeed);
         }
 
         public int GetAttackPower()

@@ -20,9 +20,9 @@ namespace VideoGameItemSystem.Src.Items
                 // Checks for the first available slot (doesn't contain an Item)
                 if (!HasSlotGotAnItem(i))
                 {
+                    Console.WriteLine("Picked up: " + item.GetItemName());
                     // Add the item to the array at the first available slot
                     items[i] = item;
-                    Console.WriteLine("Picked up: " + item.GetItemName());
                     break;
                 }
             }
@@ -34,12 +34,12 @@ namespace VideoGameItemSystem.Src.Items
             if (HasSlotGotAnItem(slotIndex))
             {
                 // If it does, set the slot to null (removes the item from inventory)
-                items[slotIndex] = null;
                 Console.WriteLine("Dropped: " + GetItemAtSlot(slotIndex)?.GetItemName());
+                items[slotIndex] = null;
             }
             else
             {
-                Console.WriteLine("Not item in that slot");
+                Console.WriteLine("No item in that slot");
             }
         }
 

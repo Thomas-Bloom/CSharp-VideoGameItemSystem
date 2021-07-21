@@ -13,6 +13,8 @@
             this.weight = weight;
         }
 
+        public abstract void PrintStats();
+
         public string GetItemName()
         {
             return itemName;

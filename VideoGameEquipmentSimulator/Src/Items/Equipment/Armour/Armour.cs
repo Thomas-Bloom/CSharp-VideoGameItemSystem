@@ -12,6 +12,11 @@ namespace VideoGameItemSystem.Src.Equipment.Armour
             this.armourRating = armourRating;
         }
 
+        public override void PrintStats()
+        {
+            Console.WriteLine("Weapon - Name: " + itemName + ", Value: " + value + ", Armour Rating: " + armourRating);
+        }
+
         public int GetArmourRating()
         {
             return armourRating;
