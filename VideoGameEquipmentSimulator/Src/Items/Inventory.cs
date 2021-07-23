@@ -46,32 +46,49 @@ namespace VideoGameItemSystem.Src.Items
         // Swap the items in each slot
         public void SwapItemSlots(int firstSlot, int secondSlot)
         {
-            // Check to make sure both slots contain items
-            if(GetItemAtSlot(firstSlot) != null && GetItemAtSlot(secondSlot) != null)
+            if(IsSlotInRange(firstSlot) && IsSlotInRange(secondSlot))
             {
-                Item tempItem = GetItemAtSlot(firstSlot);
-                items[firstSlot] = GetItemAtSlot(secondSlot);
-                items[secondSlot] = tempItem;
-                Console.WriteLine("Swapped slots (" + firstSlot + ") and (" + secondSlot + ")");
+                // Check to make sure both slots contain items
+                if (GetItemAtSlot(firstSlot) != null && GetItemAtSlot(secondSlot) != null)
+                {
+                    Item tempItem = GetItemAtSlot(firstSlot);
+                    items[firstSlot] = GetItemAtSlot(secondSlot);
+                    items[secondSlot] = tempItem;
+                    Console.WriteLine("Swapped slots (" + firstSlot + ") and (" + secondSlot + ")");
+                }
+                else
+                {
+                    Console.WriteLine("One or both slots are empty");
+                }
             }
             else
             {
-                Console.WriteLine("One or both slots are empty");
+                Console.WriteLine("Inventory too small to swap");
             }
         }
 
         // Perform a check to see if the slot already contains an item
         protected bool HasSlotGotAnItem(int index)
         {
-            return (items[index] != null);
+            if (IsSlotInRange(index))
+            {
+                return (items[index] != null);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // Return the item that is in a given slot
         public Item GetItemAtSlot(int slotIndex)
         {
-            if (HasSlotGotAnItem(slotIndex))
+            if (IsSlotInRange(slotIndex))
             {
-                return items[slotIndex];
+                if (slotIndex < items.Length)
+                    return HasSlotGotAnItem(slotIndex) ? items[slotIndex] : null;
+                else
+                    return null;
             }
             else
             {
@@ -79,10 +96,15 @@ namespace VideoGameItemSystem.Src.Items
             }
         }
 
+        private bool IsSlotInRange(int slotIndex)
+        {
+            return (slotIndex < items.Length) ? true : false;
+        }
+
         public void PrintInventory()
         {
             Console.Write("Inventory: ");
-            for(int i = 0; i < items.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
                 if (items[i] != null)
                     Console.Write(items[i].GetItemName());
@@ -92,6 +114,7 @@ namespace VideoGameItemSystem.Src.Items
                 if (i < items.Length - 1)
                     Console.Write(" | ");
             }
+
             Console.WriteLine();
         }
     }

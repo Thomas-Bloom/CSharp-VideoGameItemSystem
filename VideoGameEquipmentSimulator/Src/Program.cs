@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using VideoGameEquipmentSimulator.Src.Player;
 using VideoGameItemSystem.Src.Equipment.Armour;
 using VideoGameItemSystem.Src.Equipment.Weapons;
-using VideoGameItemSystem.Src.Items;
 
 namespace VideoGameItemSystem
 {
@@ -10,8 +10,43 @@ namespace VideoGameItemSystem
     {
         static void Main(string[] args)
         {
+            TestSystem();
+
+            Console.ReadLine();
+        }
+
+        private static void TestSystem()
+        {
+            bool wasValidNameEntered = false;
+            bool wasNumEntered = false;
+            string playerName = "";
+            int numInventorySlots = 0;
+
+            Console.WriteLine("Video Game Item System");
+
+            while(!wasValidNameEntered)
+            {
+                Console.WriteLine("Please enter your name: ");
+                string input = Console.ReadLine();
+
+                if (Regex.IsMatch(input, "^[a-zA-Z]*$"))
+                {
+                    playerName = input;
+                    wasValidNameEntered = true;
+                }
+            }
+
+            while (!wasNumEntered)
+            {
+                Console.WriteLine("Please enter how many inventory slots you would like: ");
+                wasNumEntered = int.TryParse(Console.ReadLine(), out numInventorySlots);
+            }
+
             // Create a player (that has an inventory)
-            Player player = new Player("Tom", 10);
+            Player player = new Player(playerName, numInventorySlots);
+            player.PrintInfo();
+
+            Console.WriteLine("---------------------------------------------------------------------------------------------------");
 
             // Create objects for the different items
             Sword sword = new Sword("Steel Sword", 10, 3.5f, 2, 6);
@@ -56,8 +91,6 @@ namespace VideoGameItemSystem
             // Swap the items that are in the first two slots
             player.GetInventory().SwapItemSlots(0, 1);
             player.GetInventory().PrintInventory();
-
-            Console.ReadLine();
         }
     }
 }
