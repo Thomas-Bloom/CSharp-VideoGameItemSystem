@@ -19,3 +19,19 @@ This program demonstrates how to use OOP techniques to create a text-based item/
 ## Image of test data
 This is to clearly show what is happening at every step.
 ![image](https://user-images.githubusercontent.com/20408968/126556335-adb28e8f-65b6-4271-974a-9ea1972ff326.png)
+
+## Some concepts that this project demonstrates
+- Inheritance 
+- Encapsulation
+- Output to console
+- Input from console
+- Arrays
+- Objects
+- Regex
+- Lambda Expressions
+- Null Conditional Operator
+- Conditional Operator
+- Abstract classes and functions
+- Namespaces
+- Input validation
+- Use of source control
