@@ -28,7 +28,6 @@ This is to clearly show what is happening at every step.
 - Arrays
 - Objects
 - Regex
-- Lambda Expressions
 - Null Conditional Operator
 - Conditional Operator
 - Abstract classes and functions
