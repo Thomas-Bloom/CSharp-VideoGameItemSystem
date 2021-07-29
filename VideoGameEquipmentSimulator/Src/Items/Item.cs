@@ -2,32 +2,17 @@
 {
     abstract class Item
     {
-        protected string itemName;
-        protected int value;
-        protected float weight;
+        public string ItemName { get; }
+        public int Value { get; }
+        public float Weight { get; }
 
         public Item(string itemName, int value, float weight)
         {
-            this.itemName = itemName;
-            this.value = value;
-            this.weight = weight;
+            ItemName = itemName;
+            Value = value;
+            Weight = weight;
         }
 
         public abstract void PrintStats();
-
-        public string GetItemName()
-        {
-            return itemName;
-        }
-
-        public int GetValue()
-        {
-            return value;
-        }
-
-        public float GetWeight()
-        {
-            return weight;
-        }
     }
 }

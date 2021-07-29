@@ -5,7 +5,7 @@ namespace VideoGameItemSystem.Src.Items
     class Inventory
     {
         // Inventory only holds Items
-        protected Item[] items;
+        private Item[] items;
 
         // Set the size of the array (size of inventory) based on numSlots
         public Inventory(int numSlots)
@@ -20,7 +20,7 @@ namespace VideoGameItemSystem.Src.Items
                 // Checks for the first available slot (doesn't contain an Item)
                 if (!HasSlotGotAnItem(i))
                 {
-                    Console.WriteLine("Picked up: " + item.GetItemName());
+                    Console.WriteLine("Picked up: " + item.ItemName);
                     // Add the item to the array at the first available slot
                     items[i] = item;
                     break;
@@ -34,7 +34,7 @@ namespace VideoGameItemSystem.Src.Items
             if (HasSlotGotAnItem(slotIndex))
             {
                 // If it does, set the slot to null (removes the item from inventory)
-                Console.WriteLine("Dropped: " + GetItemAtSlot(slotIndex)?.GetItemName());
+                Console.WriteLine("Dropped: " + GetItemAtSlot(slotIndex)?.ItemName);
                 items[slotIndex] = null;
             }
             else
@@ -48,12 +48,14 @@ namespace VideoGameItemSystem.Src.Items
         {
             if(IsSlotInRange(firstSlot) && IsSlotInRange(secondSlot))
             {
+                Item firstSlotItem = GetItemAtSlot(firstSlot);
+                Item secondSlotItem = GetItemAtSlot(secondSlot);
+
                 // Check to make sure both slots contain items
-                if (GetItemAtSlot(firstSlot) != null && GetItemAtSlot(secondSlot) != null)
+                if (firstSlotItem != null && secondSlotItem != null)
                 {
-                    Item tempItem = GetItemAtSlot(firstSlot);
-                    items[firstSlot] = GetItemAtSlot(secondSlot);
-                    items[secondSlot] = tempItem;
+                    items[firstSlot] = secondSlotItem;
+                    items[secondSlot] = firstSlotItem;
                     Console.WriteLine("Swapped slots (" + firstSlot + ") and (" + secondSlot + ")");
                 }
                 else
@@ -63,21 +65,14 @@ namespace VideoGameItemSystem.Src.Items
             }
             else
             {
-                Console.WriteLine("Inventory too small to swap");
+                Console.WriteLine("One or both slots are not in range");
             }
         }
 
         // Perform a check to see if the slot already contains an item
         protected bool HasSlotGotAnItem(int index)
         {
-            if (IsSlotInRange(index))
-            {
-                return (items[index] != null);
-            }
-            else
-            {
-                return false;
-            }
+            return IsSlotInRange(index) && (items[index] != null);
         }
 
         // Return the item that is in a given slot
@@ -98,7 +93,7 @@ namespace VideoGameItemSystem.Src.Items
 
         private bool IsSlotInRange(int slotIndex)
         {
-            return (slotIndex < items.Length) ? true : false;
+            return (slotIndex < items.Length);
         }
 
         public void PrintInventory()
@@ -107,14 +102,13 @@ namespace VideoGameItemSystem.Src.Items
             for (int i = 0; i < items.Length; i++)
             {
                 if (items[i] != null)
-                    Console.Write(items[i].GetItemName());
+                    Console.Write(items[i].ItemName);
                 else
                     Console.Write("None");
 
                 if (i < items.Length - 1)
                     Console.Write(" | ");
             }
-
             Console.WriteLine();
         }
     }

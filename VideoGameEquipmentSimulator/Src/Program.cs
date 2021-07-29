@@ -11,8 +11,6 @@ namespace VideoGameItemSystem
         static void Main(string[] args)
         {
             TestSystem();
-
-            Console.ReadLine();
         }
 
         private static void TestSystem()
@@ -59,38 +57,40 @@ namespace VideoGameItemSystem
 
             Console.WriteLine("---------------------------------------------------------------------------------------------------");
 
-            player.GetInventory().PrintInventory();
+            player.inventory.PrintInventory();
 
             Console.WriteLine("---------------------------------------------------------------------------------------------------");
 
             // Pick up a sword and add it to the inventory
-            player.GetInventory().PickUpItem(sword);
-            player.GetInventory().PrintInventory();
+            player.inventory.PickUpItem(sword);
+            player.inventory.PrintInventory();
 
             Console.WriteLine("---------------------------------------------------------------------------------------------------");
 
             // Pick up a shield and add it to the inventory
-            player.GetInventory().PickUpItem(shield);
-            player.GetInventory().PrintInventory();
+            player.inventory.PickUpItem(shield);
+            player.inventory.PrintInventory();
 
             Console.WriteLine("---------------------------------------------------------------------------------------------------");
 
             // Drop the item in the first slot (sword)
-            player.GetInventory().DropItemAtIndex(0);
-            player.GetInventory().PrintInventory();
+            player.inventory.DropItemAtIndex(0);
+            player.inventory.PrintInventory();
 
             Console.WriteLine("---------------------------------------------------------------------------------------------------");
 
             // Pick up another sword
             // Gets added to the first slot as it was free
-            player.GetInventory().PickUpItem(sword);
-            player.GetInventory().PrintInventory();
+            player.inventory.PickUpItem(sword);
+            player.inventory.PrintInventory();
 
             Console.WriteLine("---------------------------------------------------------------------------------------------------");
 
             // Swap the items that are in the first two slots
-            player.GetInventory().SwapItemSlots(0, 1);
-            player.GetInventory().PrintInventory();
+            player.inventory.SwapItemSlots(0, 1);
+            player.inventory.PrintInventory();
+
+            Console.ReadLine();
         }
     }
 }

@@ -5,28 +5,18 @@ namespace VideoGameItemSystem.Src.Equipment.Weapons
 {
     abstract class Weapon : Item
     {
-        protected int attackPower;
-        protected int attackSpeed;
+        protected int AttackPower { get; }
+        protected int AttackSpeed { get; }
 
         public Weapon(string itemName, int value, float weight, int attackPower, int attackSpeed) : base(itemName, value, weight)
         {
-            this.attackPower = attackPower;
-            this.attackSpeed = attackSpeed;
+            AttackPower = attackPower;
+            AttackSpeed = attackSpeed;
         }
 
         public override void PrintStats()
         {
-            Console.WriteLine("Weapon - Name: " + itemName + ", Value: " + value + ", Attack Power: " + attackPower + ", Attack Speed: " + attackSpeed);
-        }
-
-        public int GetAttackPower()
-        {
-            return attackPower;
-        }
-
-        public int GetAttackSpeed()
-        {
-            return attackSpeed;
+            Console.WriteLine("Weapon - Name: " + ItemName + ", Value: " + Value + ", Attack Power: " + AttackPower + ", Attack Speed: " + AttackSpeed);
         }
     }
 }

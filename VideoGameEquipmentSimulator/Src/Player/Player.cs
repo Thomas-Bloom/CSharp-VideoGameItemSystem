@@ -5,7 +5,7 @@ namespace VideoGameEquipmentSimulator.Src.Player
 {
     class Player
     {
-        private Inventory inventory;
+        public Inventory inventory { get; }
         private string playerName;
         private int inventorySize;
 
@@ -14,11 +14,6 @@ namespace VideoGameEquipmentSimulator.Src.Player
             this.playerName = playerName;
             this.inventorySize = inventorySize;
             inventory = new Inventory(inventorySize);
-        }
-
-        public Inventory GetInventory()
-        {
-            return inventory;
         }
 
         public void PrintInfo()
