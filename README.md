@@ -34,3 +34,4 @@ This is to clearly show what is happening at every step.
 - Namespaces
 - Input validation
 - Use of source control
+- Getters (Auto Implemented Properties)
